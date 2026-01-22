@@ -1,4 +1,4 @@
-# BDD Project – Test Automation with Behave & Selenium
+# BDD Saucedemo Project – Test Automation with Behave & Selenium
 ## Description
 
 This project represents an automated test suite written using
@@ -65,7 +65,7 @@ Checkout
 
 ## Project Structure
 ```bash 
-BDD-Project/
+BDD-Saucedemo-Project/
 │
 │ behave.ini # Behave configuration (report settings, language, etc.)
 │ browser.py # Selenium WebDriver initialization
