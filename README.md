@@ -1,76 +1,79 @@
-# Proiect BDD – Automatizare Testare cu Behave & Selenium
+# BDD Project – Test Automation with Behave & Selenium
+## Description
 
-## Descriere
+This project represents an automated test suite written using
+Behavior-Driven Development (BDD) with Behave, together with the Page Object Model (POM).
+The tests validate the essential functionalities of a web application:
+Login, Products, Cart, and Checkout.
+The project is structured to be easy to extend, maintain, and integrate
+into a real-world QA Automation environment.
 
-Acest proiect reprezintă o suită de teste automate scrise folosind
-Behavior-Driven Development (BDD) cu Behave, împreună cu modelul  Page Object Model (POM).
-Testele validează funcționalitățile esențiale ale unei aplicații web:
-Login, Produse, Coș și Checkout.
-Proiectul este structurat astfel încât să fie ușor de extins, întreținut și integrat
-într-un mediu real de QA Automation.
+## Technologies Used
 
-## Tehnologii folosite
+Python 3.13
 
-- Python 3.13
-- Behave – framework BDD
-- Selenium WebDriver
-- Page Object Model (POM)
-- Chrome / Edge / Firefox WebDriver
+Behave – BDD framework
 
-## Instalare
+Selenium WebDriver
 
-1. Clonează proiectul:
+Page Object Model (POM)
+
+Chrome / Edge / Firefox WebDriver
+
+## Installation
+
+1. Clone the project:
 ```bash
    git clone https://github.com/28mirceas/Proiect-BDD.git
    cd Proiect-BDD
 ```
-2. Instalează dependențele:
+2. Install dependencies:
 ```bash   
 pip install -r requirements.txt
 ```
-3. Asigură-te că ai instalat WebDriver-ul potrivit
-- ChromeDriver / EdgeDriver / GeckoDriver
-             - Poate fi configurat în browser.py
 
-## Rularea testelor
+3. Make sure you have the appropriate WebDriver installed
 
-```bash  
-Rulare simplă:
+ChromeDriver / EdgeDriver / GeckoDriver
+- Can be configured in browser.py
+
+## Running the Tests
+Simple run:
 behave
-Rulare cu afișare detaliată:
+Verbose run:
 behave -v
-Rulare pe un anumit feature:
+Run a specific feature:
 behave features/login.feature
-```
-## Scenarii de test incluse
-      Login
-•	Autentificare cu credențiale valide
-•	Autentificare cu email invalid
-•	Eroare la parolă greșită
-     Produse
-•	Navigare pagina produse
-•	Vizualizare listă produse
-•	Adăugare produs în coș
-      Coș de cumparaturi
-•	Verificarea produselor din coș
-•	Modificare cantitate
-•	Eliminare produse
-     Checkout
-•	Completare date utilizator
-•	Validare câmpuri obligatorii
-•	Confirmare comandă
 
-##  Structura proiectului
+## Included Test Scenarios
+  Login
+   • Login with valid credentials
+   • Login with invalid email
+   • Error on incorrect password
+Products
+   • Navigate to products page
+   • View product list
+   • Add product to cart
+Shopping Cart
+   • Verify products in cart
+   • Update quantity
+   • Remove products
+Checkout
+   • Fill in user details
+   • Validate required fields
+   • Order confirmation
+
+## Project Structure
 ```bash 
-Proiect-BDD/
+BDD-Project/
 │
-│ behave.ini # Configurarea Behave (setări pentru rapoarte, limbă etc.)
-│ browser.py # Inițializarea driverului Selenium
-│ environment.py # Hook-urile Behave (before_all, after_scenario etc.)
-│ requirements.txt # Dependențe Python
-│ README.md # Documentația proiectului
+│ behave.ini # Behave configuration (report settings, language, etc.)
+│ browser.py # Selenium WebDriver initialization
+│ environment.py # Behave hooks (before_all, after_scenario etc.)
+│ requirements.txt # Python dependencies
+│ README.md # Project documentation
 │
-├───features/ # Scenarii BDD (fișiere .feature)
+├───features/ # BDD scenarios (.feature files)
 │ cart.feature
 │ checkout.feature
 │ login.feature
@@ -83,50 +86,50 @@ Proiect-BDD/
 │ login_page.py
 │ products_page.py
 │
-├───steps/ # Implementarea pașilor Behave
+├───steps/ # Behave step implementations
 │ cart_steps.py
 │ checkout_steps.py
 │ login_steps.py
 │ products_steps.py
 │
-└───pycache/ # Fișiere generate automat
+└───pycache/ # Auto-generated files
 ```
+
 Page Object Model
-Toate paginile sunt definite în folderul:
+All pages are defined in the folder:
 pages/
-Fiecare fișier conține:
-•	locatorii elementelor
-•	acțiunile disponibile pe pagină
-•	metode reutilizabile pentru scenarii
-Exemple:
-•	login_page.py
-•	products_page.py
-•	cart_page.py
-•	checkout_page.py
-________________________________________
-Configurarea Behave
-Fișierul behave.ini permite configurarea implicită:
-•	limbă (Gherkin)
-•	format rapoarte
-•	opțiuni pentru rulare
-________________________________________
-Hook-uri Behave
-În environment.py sunt definite:
-•	before_all
-•	before_scenario
-•	after_scenario
-•	after_all
-Acestea asigură:
-•	inițializarea și distrugerea driverului
-•	atașarea capturilor la rapoarte (dacă este activată)
-•	curățarea resurselor
-________________________________________
-Rapoarte
-În funcție de configurarea din behave.ini, poți genera:
-•	rapoarte HTML
-•	rapoarte JSON
-•	capturi de ecran la eșecuri
+Each file contains:
+• element locators
+• available page actions
+• reusable methods for scenarios
+Examples:
+• login_page.py
+• products_page.py
+• cart_page.py
+• checkout_page.py
 
-## Licenta
+Behave Configuration
+The behave.ini file allows default configuration:
+• language (Gherkin)
+• report format
+• run options
 
+Behave Hooks
+In environment.py, the following are defined:
+• before_all
+• before_scenario
+• after_scenario
+• after_all
+These ensure:
+• driver initialization and teardown
+• attaching screenshots to reports (if enabled)
+• resource cleanup
+
+Reports
+Depending on the configuration in behave.ini, you can generate:
+• HTML reports
+• JSON reports
+• screenshots on failures
+
+## License
 [MIT](https://choosealicense.com/licenses/mit/)
