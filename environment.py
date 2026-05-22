@@ -20,4 +20,5 @@ def before_scenario(context, scenario):
 
 
 def after_all(context):
-    context.browser.close()
+    if hasattr(context, "browser"):
+        context.browser.close()
