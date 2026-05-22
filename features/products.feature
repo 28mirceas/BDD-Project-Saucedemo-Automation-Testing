@@ -1,6 +1,5 @@
 Feature: Verify the functionality of the products page
 
-
   @products
   @productsPrice
   Scenario: Verify products are sorted by price (low to high)
