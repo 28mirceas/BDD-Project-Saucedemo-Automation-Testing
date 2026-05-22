@@ -1,6 +1,5 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-from pages.checkout_page import CheckoutPage
 
 
 CART_PAGE_URL = "https://www.saucedemo.com/cart.html"
@@ -15,12 +14,15 @@ class CartPage(BasePage):
     ICON_CART = (By.ID, 'shopping_cart_container')
     BADGE_CART = (By.XPATH, "//span[@class='shopping_cart_badge']")
 
+    def __init__(self, driver):
+        super().__init__(driver)
+
     def get_products_name_by_index(self, index):
         products = self.driver.find_elements(*self.PRODUCT_NAME)
         return products[index].text
 
     def get_cart_item_name_by_index(self, index):
-        cart_item = self.driver.find_element(*self.CART_ITEM)
+        cart_item = self.find(self.CART_ITEM)
         return cart_item[index].text
 
     def add_item_to_cart(self, index):
@@ -28,11 +30,14 @@ class CartPage(BasePage):
         button = list_all_buttons[index]
         button.click()
 
+
     def open_cart_page(self):
         self.click(self.ICON_CART)
 
+
     def open_checkout_page(self):
         self.click(self.CHECKOUT_BUTTON)
+
 
     def remove_items_from_cart(self):
         while True:
