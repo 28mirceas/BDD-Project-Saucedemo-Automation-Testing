@@ -19,3 +19,7 @@ def steps_impl(context):
 @then('The url of the current page is "{expected_url}"')
 def steps_impl(context, expected_url):
     context.login_page.verify_current_url(expected_url)
+
+@then('See the login error "{error_message}"')
+def steps_impl(context, error_message):
+    assert context.login_page.get_login_error_message_text() == error_message
