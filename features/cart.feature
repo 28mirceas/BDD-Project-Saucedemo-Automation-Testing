@@ -9,15 +9,6 @@ Feature: Verify the functionality of the cart page
 
 
   @cart
-  @addRemoveProductFromCart
-    Scenario: Add product in the shopping card then and remove it from the shopping cart
-    Given Add product number 2 to the cart
-    When Click to cart icon
-    And Remove the product from the cart
-    Then Verify the cart is empty
-
-
-  @cart
   @removeOneProductFromCart
     Scenario: Add more products in the shopping cart and remove one product from shopping cart
     Given Add product number 1 to the cart
@@ -25,7 +16,7 @@ Feature: Verify the functionality of the cart page
     And Click to cart icon
     And Remove product "Sauce Labs Bolt T-Shirt" from the cart
     Then Verify if product "Sauce Labs Bolt T-Shirt" is removed from cart
-  
+
 
   @cart
   @checkoutFlow
