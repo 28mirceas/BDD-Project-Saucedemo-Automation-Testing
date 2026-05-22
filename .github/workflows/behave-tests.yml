@@ -39,7 +39,7 @@ jobs:
       - name: Generate HTML report
         if: always()
         run: |
-          behave -f html -o report.html
+          behave -f html-pretty -o report.html
 
       - name: Upload report
         if: always()
