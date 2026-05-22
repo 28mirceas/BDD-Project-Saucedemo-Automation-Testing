@@ -7,11 +7,10 @@ from pages.checkout_page import CheckoutPage
 
 def before_all(context):
     context.browser = Browser()
-    context.login_page = LoginPage()
-    context.products_page = ProductsPage()
-    context.cart_page = CartPage()
-    context.checkout_page = CheckoutPage()
-
+    context.login_page = LoginPage(context.browser.driver)
+    context.products_page = ProductsPage(context.browser.driver)
+    context.cart_page = CartPage(context.browser.driver)
+    context.checkout_page = CheckoutPage(context.browser.driver)
 
 def before_scenario(context, scenario):
     # Login automat doar pentru scenariile cu tag @products sau @cart
