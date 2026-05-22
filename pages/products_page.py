@@ -1,6 +1,5 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
 
 PRODUCTS_PAGE_URL = "https://www.saucedemo.com/inventory.html"
 
@@ -10,10 +9,12 @@ class ProductsPage(BasePage):
     ITEM_NAME = (By.CLASS_NAME, 'inventory_item_name')
     DROPDOWN_SORT = (By.CLASS_NAME, 'product_sort_container')
 
+    def __init__(self, driver):
+        super().__init__(driver)
 
-    def select_dropdown_item(self, text):
-        dropdown = Select(self.find(self.DROPDOWN_SORT))
-        dropdown.select_by_visible_text(text)
+
+    def select_dropdown(self, text):
+        self.select_item_by_text(self.find(self.DROPDOWN_SORT), text)
 
 
     def verify_product_price_sorted_low_to_high(self):
