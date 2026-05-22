@@ -12,6 +12,9 @@ class CheckoutPage(BasePage):
     CHECKOUT_ITEM_PRICE = (By.XPATH, "//div[@class='inventory_item_price']")
     TOTAL_PRICE = (By.XPATH, "//div[@class='summary_subtotal_label']")
 
+    def __init__(self, driver):
+        super().__init__(driver)
+
     def set_first_name(self, text):
         self.type(self.INPUT_FIRST_NAME, text)
 
