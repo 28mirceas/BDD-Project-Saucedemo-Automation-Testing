@@ -29,10 +29,12 @@ class LoginPage(BasePage):
     def get_login_error_message_text(self):
         return self.find(self.ERROR_LOGIN_MESSAGE).text
 
-    def login(self, username, password):
+    def login(self, username, password):        
         self.set_username(username)
         self.set_password(password)
         self.click_button()
+        
+        self.wait.until(EC.url_contains("inventory.html"))
 
 
 
