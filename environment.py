@@ -5,20 +5,20 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 
 
-def before_all(context):
-    context.browser = Browser()
-    context.login_page = LoginPage(context.browser.driver)
-    context.products_page = ProductsPage(context.browser.driver)
-    context.cart_page = CartPage(context.browser.driver)
-    context.checkout_page = CheckoutPage(context.browser.driver)
-
 def before_scenario(context, scenario):
-    # Login automat doar pentru scenariile cu tag @products sau @cart
-    if "products" in scenario.tags or "cart" in scenario.tags:
-        context.login_page.open()
-        context.login_page.login("standard_user", "secret_sauce")
+        context.browser = Browser()
+
+        context.login_page = LoginPage(context.browser.driver)
+        context.products_page = ProductsPage(context.browser.driver)
+        context.cart_page = CartPage(context.browser.driver)
+        context.checkout_page = CheckoutPage(context.browser.driver)
+
+        if "products" in scenario.tags or "cart" in scenario.tags:
+            context.login_page.open()
+            context.login_page.login("standard_user", "secret_sauce")
 
 
-def after_all(context):
-    if hasattr(context, "browser"):
+def after_scenario(context, scenario):
+    if hasattr(context, "browser") and context.browser:
         context.browser.close()
+        context.browser = None
