@@ -38,12 +38,12 @@ class CartPage(BasePage):
         self.click(self.ICON_CART)
 
 
-    # def open_checkout_page(self):
-    #     self.click(self.CHECKOUT_BUTTON)
-
     def open_checkout_page(self):
-    element = self.wait.until(EC.element_to_be_clickable(self.CHECKOUT_BUTTON))
-    self.driver.execute_script("arguments[0].click();", element)
+        self.click(self.CHECKOUT_BUTTON)
+
+    # def open_checkout_page(self):
+    # element = self.wait.until(EC.element_to_be_clickable(self.CHECKOUT_BUTTON))
+    # self.driver.execute_script("arguments[0].click();", element)
 
 
     def remove_items_from_cart(self):
