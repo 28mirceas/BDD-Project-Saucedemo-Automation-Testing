@@ -41,11 +41,7 @@ class CartPage(BasePage):
     def open_checkout_page(self):
         self.click(self.CHECKOUT_BUTTON)
 
-    # def open_checkout_page(self):
-    # element = self.wait.until(EC.element_to_be_clickable(self.CHECKOUT_BUTTON))
-    # self.driver.execute_script("arguments[0].click();", element)
-
-
+    
     def remove_items_from_cart(self):
         while True:
             cart_buttons = self.driver.find_elements(*self.BUTTON_REMOVE_FROM_CART)
