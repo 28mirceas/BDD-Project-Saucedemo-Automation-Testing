@@ -1,5 +1,7 @@
 from behave import given, when, then
 
+from behave import given, when, then
+
 @given('Navigate to login page')
 def steps_impl(context):
     context.login_page.open()
