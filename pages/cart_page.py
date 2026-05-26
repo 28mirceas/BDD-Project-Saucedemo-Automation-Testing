@@ -11,19 +11,22 @@ class CartPage(BasePage):
     CHECKOUT_BUTTON = (By.ID, "checkout")
     PRODUCT_NAME = (By.CLASS_NAME, "inventory_item_name")
     CART_ITEM = (By.XPATH, "//div[@class='cart_item']")
-    ICON_CART = (By.ID, 'shopping_cart_container')
+    ICON_CART = (By.XPATH, "//a[@class='shopping_cart_link']")
     BADGE_CART = (By.XPATH, "//span[@class='shopping_cart_badge']")
 
     def __init__(self, driver):
         super().__init__(driver)
+        
 
     def get_products_name_by_index(self, index):
         products = self.driver.find_elements(*self.PRODUCT_NAME)
         return products[index].text
+        
 
     def get_cart_item_name_by_index(self, index):
         cart_item = self.find(self.CART_ITEM)
         return cart_item[index].text
+        
 
     def add_item_to_cart(self, index):
         list_all_buttons = self.driver.find_elements(*self.BUTTON_ADD_TO_CART)
@@ -77,10 +80,6 @@ class CartPage(BasePage):
         for item in items:
             name = item.find_element(*self.PRODUCT_NAME).text
             assert name != product_name, f"Produsul '{product_name}' încă există în coș!"
-
-
-    def verify_new_url(self, expected_url):
-        return self.driver.current_url == expected_url
 
 
     def items_checkout_step_one(self, index1, index2):
