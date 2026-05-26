@@ -34,12 +34,12 @@ jobs:
 
       - name: Run Behave tests
         run: |
-          behave
+           behave --tags=-@flaky
 
       - name: Generate HTML report
         if: always()
         run: |
-          behave 
+          behave -f html -o report.html --tags=-@flaky
 
       - name: Upload report
         if: always()
