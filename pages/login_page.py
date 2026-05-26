@@ -9,6 +9,7 @@ class LoginPage(BasePage):
     INPUT_PASSWORD = (By.ID, "password")
     BUTTON_LOGIN = (By.ID, "login-button")
     ERROR_LOGIN_MESSAGE = (By.CSS_SELECTOR, 'h3[data-test="error"]')
+   
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -25,9 +26,6 @@ class LoginPage(BasePage):
     def click_button(self):
         self.click(self.BUTTON_LOGIN)
 
-    def verify_current_url(self, expected_url):
-        return self.driver.current_url == expected_url
-
     def get_login_error_message_text(self):
         return self.find(self.ERROR_LOGIN_MESSAGE).text
 
@@ -35,6 +33,7 @@ class LoginPage(BasePage):
         self.set_username(username)
         self.set_password(password)
         self.click_button()
+
 
 
 
