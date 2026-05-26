@@ -18,21 +18,33 @@ class ProductsPage(BasePage):
 
 
     def verify_product_price_sorted_low_to_high(self):
-        list_all_items = self.driver.find_elements(*self.ITEM_PRICE)
+        list_all_items = self.find_multiple(self.ITEM_PRICE)
         list_all_items_price = []
 
         for item in list_all_items:
-            price = item.text.replace("$", "")
+            price = item.text.replace("$", "").strip()
             list_all_items_price.append(float(price))
 
-        assert list_all_items_price == sorted(list_all_items_price)
+        expected = sorted(list_all_items_price)
+        assert list_all_items_price == expected, f"Price not sorted: {list_all_items_price}"
 
 
     def verify_product_name_sorted_z_to_a(self):
-        list_all_items = self.driver.find_elements(*self.ITEM_NAME)
+        list_all_items = self.find_multiple(self.ITEM_NAME)
         list_all_items_name = []
 
         for item in list_all_items:
            list_all_items_name.append(item.text)
 
-        assert list_all_items_name ==  sorted(list_all_items_name,reverse = True)
+        expected = sorted(list_all_items_name, reverse=True)
+        assert list_all_items_name == expected, f"Name not sorted: {list_all_items_name}"
+        
+
+    def add_product_to_cart(self, product_name):
+        locator = (
+            By.XPATH,
+            f"//div[contains(@class,'inventory_item_name') and normalize-space(text())='{product_name}']"
+            "/ancestor::div[contains(@class,'inventory_item')]"
+            "//button"
+        )
+        self.click(locator)
